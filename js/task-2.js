@@ -27,20 +27,12 @@ const images = [
 
 const listEl = document.querySelector('.gallery');
 
-images.forEach(value => {
-  const imagesUrl = value.url;
-  const imagesAlt = value.alt;
+const imagesMarkup = images.map(value => 
+  `<li class="gallery-item">
+     <img src="${value.url}" alt="${value.alt}" width="360" height="300">
+   </li>`
+).join('');
 
-  const linkEl = document.createElement('li');
-  linkEl.classList.add('gallery-item');
+listEl.innerHTML = imagesMarkup;
 
-  const imgitemEL = document.createElement('img');
-  imgitemEL.src = imagesUrl;
-  imgitemEL.alt = imagesAlt;
-  imgitemEL.width = 360;
-  imgitemEL.height = 300;
-
-  linkEl.appendChild(imgitemEL);  
-  listEl.appendChild(linkEl);  
-});
-console.log(listEl)
+console.log(listEl);
